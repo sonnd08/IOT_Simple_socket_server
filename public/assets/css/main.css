@@ -1,0 +1,5 @@
+.messagesContainer {
+  padding: 1rem;
+  background: #f1f1f1; }
+  .messagesContainer p {
+    min-height: 400px; }

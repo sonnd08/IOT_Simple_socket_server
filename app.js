@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
+const sassMiddleware = require('node-sass-middleware');
 
 var app = express();
 
@@ -18,7 +19,18 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// adding the sass middleware
+app.use(
+  sassMiddleware({
+    src: __dirname + '/public/assets/css',
+    debug: true,
+    prefix: '/assets/css',
+  })
+);
+// The static middleware must come after the sass middleware
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', indexRouter);
 

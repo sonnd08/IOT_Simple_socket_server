@@ -6,7 +6,8 @@ export default class index extends Component {
       <html>
       <head>
         <title>{this.props.title}</title>
-        <link rel="stylesheet" href="/stylesheets/style.css" />
+        <link rel="stylesheet" href="/assets/css/main.css" />
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossOrigin="anonymous"/>
         {/* <script
           dangerouslySetInnerHTML={{
             __html: `
