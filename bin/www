@@ -9,6 +9,7 @@ const Socket = require('socket.io');
 var app = require('../app');
 var debug = require('debug')('realtimechatapp:server');
 var http = require('http');
+var ip = require('ip')
 
 /**
  * Get port from environment and store in Express.
@@ -44,6 +45,11 @@ io.on('connection', (socket) => {
     console.log('EVENT "chatMsg": ', comingObj)
     // io.emit('chatMsg', msg)
     socket.broadcast.emit('chatMsg', comingObj)
+  })
+
+  socket.on('updateLedStatus', obj=>{
+    console.log('A client send updateLedStatus: ', obj)
+    socket.broadcast.emit('updateLedStatus', obj)
   })
 })
 /**
@@ -105,4 +111,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
   console.log('Server is running on ', bind);
+  console.log('Server ip: ', ip.address() + ":" + addr.port);
 }
